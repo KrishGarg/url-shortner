@@ -83,7 +83,7 @@ app.post('/api/shorten', async (req, res) => {
                 return;
             } else {
                 console.log(__dirname);
-                console.log(fs.readFileSync('./views'))
+                console.log(fs.readDirSync('.'))
                 res.render('shortMade.ejs', {shortURL: obj.shortURL});
             }
         })

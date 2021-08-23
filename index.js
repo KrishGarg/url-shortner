@@ -81,10 +81,7 @@ app.post('/api/shorten', async (req, res) => {
                     .json(obj)
                 return;
             } else {
-                res.render('shortMade', {
-                    shortURL: obj.shortURL
-                });
-                return;
+                res.send("tlsr.ga/" + obj.shortURL);
             }
         })
 })

@@ -1,0 +1,19 @@
+{
+  "name": "link-shortner",
+  "version": "1.0.0",
+  "description": "An app to redirect to other urls and to make them short urls.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.8",
+    "nanoid": "^3.1.25"
+  }
+}

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
 
 require('dotenv').config();
-const ShortURL = require('./models/ShortURL.model')
+const ShortURL = require('../models/ShortURL.model')
 
 // App Setup
 const app = express();
@@ -25,7 +25,7 @@ mongoose.connect(
     .catch(err => console.error(err))
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'home.html'));
+    res.sendFile(path.resolve(__dirname, '../home.html'));
 })
 
 const validURL = (str) => {

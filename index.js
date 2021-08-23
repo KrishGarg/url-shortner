@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
+const fs = require('fs');
 
 require('dotenv').config();
 const ShortURL = require('./models/ShortURL.model');
@@ -81,7 +82,14 @@ app.post('/api/shorten', async (req, res) => {
                     .json(obj)
                 return;
             } else {
-                res.send("tlsr.ga/" + obj.shortURL);
+                console.log(__dirname);
+                console.log(fs.readFile('./views'), (err, files) => {
+                    if (err) {console.error(err)}
+                    else {
+                        console.log(files);
+                    }
+                })
+                res.render('shortMade.ejs', {shortURL: obj.shortURL});
             }
         })
 })

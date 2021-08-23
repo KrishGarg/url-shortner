@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
 
 require('dotenv').config();
-const ShortURL = require('./models/ShortURL.model')
+const ShortURL = require('./models/ShortURL.model');
 
 // App Setup
 const app = express();

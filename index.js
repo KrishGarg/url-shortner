@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { nanoid } = require('nanoid');
 
 require('dotenv').config();
-const ShortURL = require('../models/ShortURL.model')
+const ShortURL = require('./models/ShortURL.model')
 
 // App Setup
 const app = express();
@@ -94,7 +94,7 @@ app.get('/:id', async (req, res) => {
     let data = await ShortURL.findOne({
         shortURL: id
     });
-    if (data.length === 0) {
+    if (!data || data.length === 0) {
         res.sendFile(path.resolve(__dirname, "not_found.html"))
     } else {
         data.uses++;

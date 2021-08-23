@@ -25,7 +25,7 @@ mongoose.connect(
     .catch(err => console.error(err))
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/home.html'));
+    res.sendFile(path.resolve(__dirname, 'home.html'));
 })
 
 const validURL = (str) => {
@@ -95,7 +95,7 @@ app.get('/:id', async (req, res) => {
         shortURL: id
     });
     if (data.length === 0) {
-        res.sendFile(path.resolve(__dirname, "public/not_found.html"))
+        res.sendFile(path.resolve(__dirname, "not_found.html"))
     } else {
         data.uses++;
         await data.save();

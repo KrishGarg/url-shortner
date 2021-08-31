@@ -94,11 +94,17 @@ app.post("/api/shorten", async (req, res) => {
                             background-color: rgb(64, 63, 153);
                         }
                     </style>
+                    <script>
+                        function copy(){
+                            navigator.clipboard.writeText("tlsr.ga/${obj.shortURL}");
+                        }
+                    </script>
                     <div class="container">
                         <div class="card  position-absolute top-50 start-50 translate-middle">
                             <div class="card-body">
                               Shortned URL: tlsr.ga/${obj.shortURL}
                             </div>
+                            <button class="btn btn-primary" id="myBtn" onclick="copy();">Copy</button>
                         </div>
                     </div>
                 </body>

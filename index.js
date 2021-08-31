@@ -100,7 +100,7 @@ app.post("/api/shorten", async (req, res) => {
                     </style>
                     <script>
                         function copy(){
-                            navigator.clipboard.writeText("tlsr.ga/${obj.shortURL}");
+                            navigator.clipboard.writeText("https://tlsr.ga/${obj.shortURL}");
                         }
                     </script>
                     <div class="container">

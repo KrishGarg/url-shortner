@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const { nanoid } = require("nanoid");
+const { isHttpsUri } = require("valid-url");
 
 require("dotenv").config();
 const ShortURL = require("./models/ShortURL.model");
@@ -31,19 +32,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./home.html"));
 });
 
-const validURL = (str) => {
-  var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  ); // fragment locator
-  return !!pattern.test(str);
-};
-
 app.post("/api/shorten", async (req, res) => {
   if ("type" in req.body) {
     if (req.body.type !== "json") {
@@ -53,7 +41,7 @@ app.post("/api/shorten", async (req, res) => {
       return;
     }
 
-    if (!validURL(req.body.longURL)) {
+    if (!isHttpsUri(req.body.longURL)) {
       res.status(403).json({
         Error: "Invalid URL.",
       });

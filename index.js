@@ -2,7 +2,6 @@ const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const { nanoid } = require("nanoid");
-const fs = require("fs");
 
 require("dotenv").config();
 const ShortURL = require("./models/ShortURL.model");

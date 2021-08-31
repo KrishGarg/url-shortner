@@ -22,6 +22,10 @@ mongoose
   .then(() => console.log("Connected to the MongoDB server."))
   .catch((err) => console.error(err));
 
+app.get("/docs", (req, res) => {
+  res.redirect("https://krishgarg6306.gitbook.io/urlshortner/");
+});
+
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./home.html"));
 });

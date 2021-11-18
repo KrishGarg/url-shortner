@@ -9,6 +9,9 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Page Js Script -->
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+
     <!-- Bootstrap Css -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -21,7 +24,7 @@
   <body>
     <!-- Shorten a url card -->
     <form
-      class="position-absolute top-50 start-50 translate-middle"
+      class="position-absolute top-50 start-50 translate-middle d-none"
       id="submit-form"
     >
       <div class="mb-3">
@@ -43,9 +46,7 @@
     <!-- Success Card (By default hidden) -->
     <div class="container d-none" id="success-card">
       <div class="card position-absolute top-50 start-50 translate-middle">
-        <div class="card-body" id="shortened-div">
-          Shortned URL: tlsr.ga/${obj.shortURL}
-        </div>
+        <div class="card-body" id="shortened-div"></div>
         <button class="btn btn-primary" id="copy-btn">Copy</button>
       </div>
     </div>
@@ -69,6 +70,38 @@
       import "./style.css";
 
       import copy from "copy-to-clipboard";
+
+      function reset() {
+        const elementsToHide = ["#submit-form", "#success-card"];
+
+        elementsToHide.forEach((el) => {
+          if (!$(el).hasClass("d-none")) {
+            $(el).addClass("d-none");
+          }
+        });
+      }
+
+      function home() {
+        reset();
+        $("#submit-form").removeClass("d-none");
+      }
+
+      function success() {
+        reset();
+        if ($("#shortened-div").text().length <= 0) {
+          page.redirect("/");
+        }
+        $("#success-card").removeClass("d-none");
+      }
+
+      function wildCard(ctx) {
+        console.log(ctx.path);
+      }
+
+      page("/", home);
+      page("/success", success);
+      page("*", wildCard);
+      page();
 
       $(() => {
         $("#submit-form").on("submit", (e) => {

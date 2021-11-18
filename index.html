@@ -76,7 +76,7 @@
 
           $("#submit-btn").attr("disabled", true);
 
-          $.get("/api/shorten", (data) => {
+          $.post("/api/shorten", (data) => {
             console.log(data);
             $("#shortened-div").text(
               `Shortned URL: https://tlsr.ga/${data.shortURL}`

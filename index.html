@@ -95,7 +95,7 @@
       }
 
       function wildCard(ctx) {
-        console.log(ctx.path);
+        console.log(ctx.path.replace("/", ""));
       }
 
       page("/", home);
@@ -109,19 +109,25 @@
 
           $("#submit-btn").attr("disabled", true);
 
-          $.post("/api/shorten", (data) => {
-            console.log(data);
-            $("#shortened-div").text(
-              `Shortned URL: https://tlsr.ga/${data.shortURL}`
-            );
+          $.post(
+            "/api/shorten",
+            {
+              longURL: $("#longURL").val(),
+            },
+            (data) => {
+              console.log(data);
+              $("#shortened-div").text(
+                `Shortned URL: https://tlsr.ga/${data.shortURL}`
+              );
 
-            $("#copy-btn").on("click", () => {
-              copy(`https://tlsr.ga/${data.shortURL}`);
-            });
+              $("#copy-btn").on("click", () => {
+                copy(`https://tlsr.ga/${data.shortURL}`);
+              });
 
-            $("#submit-form").addClass("d-none");
-            $("#success-card").removeClass("d-none");
-          });
+              $("#submit-form").addClass("d-none");
+              $("#success-card").removeClass("d-none");
+            }
+          );
         });
       });
     </script>

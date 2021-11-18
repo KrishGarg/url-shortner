@@ -15,14 +15,11 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log("before doc 1");
     const doc = await prisma.shorturls.findFirst({
       where: {
         shortURL: req.body.shortURL,
       },
     });
-
-    console.log(doc);
 
     if (!doc) {
       return res.status(404).json({
@@ -31,10 +28,9 @@ export default async function handler(req, res) {
       });
     }
 
-    console.log("before doc 2");
     const updatedDoc = await prisma.shorturls.update({
       where: {
-        shortURL: req.body.shortURL,
+        id: doc.id,
       },
       data: {
         uses: {
@@ -42,7 +38,6 @@ export default async function handler(req, res) {
         },
       },
     });
-    console.log(updatedDoc);
 
     return res.status(200).json({
       ...updatedDoc,

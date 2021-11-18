@@ -1,11 +1,18 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model shorturls {
+  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  longURL   String
+  shortURL  String
+  uses      Int
+  createdAt DateTime @db.Date @default(now())
+  updatedAt DateTime @db.Date @updatedAt
 }

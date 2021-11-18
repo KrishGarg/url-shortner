@@ -54,6 +54,7 @@ export default async function handler(req, res) {
       error: false,
     });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       message: "There was some issue in the backend.",
       error: true,

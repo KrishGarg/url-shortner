@@ -51,6 +51,18 @@
       </div>
     </div>
 
+    <!-- Redirecting Text -->
+    <div class="d-none text-center mt-3" id="redirecting-text">
+      <div class="fs-1 text-white">Redirecting...</div>
+      <div class="fs-3" id="redirected-link-text"></div>
+    </div>
+
+    <!-- Some Issue! -->
+    <div class="d-none text-center fs-2 text-white" id="some-issue">
+      There was some issue on the server! <br />
+      <a href="./" style="color: inherit">Go to Home</a>
+    </div>
+
     <!-- Bootstrap Script -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
@@ -66,78 +78,6 @@
     ></script>
 
     <!-- Custom Script -->
-    <script type="module">
-      import "./style.css";
-
-      import copy from "copy-to-clipboard";
-
-      function reset() {
-        const elementsToHide = ["#submit-form", "#success-card"];
-
-        elementsToHide.forEach((el) => {
-          if (!$(el).hasClass("d-none")) {
-            $(el).addClass("d-none");
-          }
-        });
-      }
-
-      function home() {
-        reset();
-        $("#submit-form").removeClass("d-none");
-      }
-
-      function success() {
-        reset();
-        if ($("#shortened-div").text().length <= 0) {
-          page.redirect("/");
-        }
-        $("#success-card").removeClass("d-none");
-      }
-
-      function wildCard(ctx) {
-        const shortURL = ctx.path.replace("/", "");
-
-        $.post(
-          "/api/getlongurl",
-          {
-            shortURL,
-          },
-          (data) => {
-            window.location.replace(data.longURL);
-          }
-        );
-      }
-
-      page("/", home);
-      page("/success", success);
-      page("*", wildCard);
-      page();
-
-      $(() => {
-        $("#submit-form").on("submit", (e) => {
-          e.preventDefault();
-
-          $("#submit-btn").attr("disabled", true);
-
-          $.post(
-            "/api/shorten",
-            {
-              longURL: $("#longURL").val(),
-            },
-            (data) => {
-              $("#shortened-div").text(
-                `Shortned URL: https://tlsr.ga/${data.shortURL}`
-              );
-
-              $("#copy-btn").on("click", () => {
-                copy(`https://tlsr.ga/${data.shortURL}`);
-              });
-
-              page.redirect("/success");
-            }
-          );
-        });
-      });
-    </script>
+    <script type="module" src="/index.js"></script>
   </body>
 </html>

@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/((?!(api|robots.txt)/).*)",
-      "destination": "/index.html"
-    }
-  ]
-}

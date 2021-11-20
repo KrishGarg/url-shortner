@@ -66,9 +66,15 @@ function someIssue() {
   $("#some-issue").removeClass("d-none");
 }
 
+function docs() {
+  reset();
+  window.location.replace("https://krishgarg6306.gitbook.io/urlshortner/");
+}
+
 page("/", home);
 page("/success", success);
 page("/oops", someIssue);
+page("/docs", docs);
 page("/:shortcode", wildCard);
 page();
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://img.icons8.com/material-two-tone/24/000000/puzzle.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page Js Script -->
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+
+    <!-- Bootstrap Css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <!-- Shorten a url card -->
+    <form
+      class="position-absolute top-50 start-50 translate-middle d-none"
+      id="submit-form"
+    >
+      <div class="mb-3">
+        <label for="longUrl" class="form-label text-light">Long Url: </label>
+        <input
+          type="url"
+          class="form-control"
+          id="longURL"
+          name="longURL"
+          placeholder="https://example.com"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success" id="submit-btn">
+        Shrink it!
+      </button>
+    </form>
+
+    <!-- Success Card -->
+    <div class="container d-none" id="success-card">
+      <div class="card position-absolute top-50 start-50 translate-middle">
+        <div class="card-body" id="shortened-div"></div>
+        <button class="btn btn-primary" id="copy-btn">Copy</button>
+      </div>
+    </div>
+
+    <!-- Redirecting Text -->
+    <div class="d-none text-center mt-3" id="redirecting-text">
+      <div class="fs-1 text-white">Redirecting...</div>
+      <div class="fs-3" id="redirected-link-text"></div>
+    </div>
+
+    <!-- Some Issue! -->
+    <div class="d-none text-center fs-2 text-white" id="some-issue">
+      There was some issue on the server! <br />
+      <a href="./" style="color: inherit">Go to Home</a>
+    </div>
+
+    <!-- Bootstrap Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom Script -->
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>

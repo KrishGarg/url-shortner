@@ -1,0 +1,19 @@
+{
+  "name": "vite-project",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "prisma": "^3.5.0",
+    "vite": "^2.6.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.5.0",
+    "copy-to-clipboard": "^3.3.1",
+    "nanoid": "^3.1.30",
+    "valid-url": "^1.0.9"
+  }
+}

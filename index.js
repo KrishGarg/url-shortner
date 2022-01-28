@@ -68,7 +68,7 @@ function someIssue() {
 
 function docs() {
   reset();
-  window.location.replace("https://krishgarg6306.gitbook.io/urlshortner/");
+  window.location.replace("https://github.com/KrishGarg/url-shortner/wiki/API-Routes");
 }
 
 page("/", home);
